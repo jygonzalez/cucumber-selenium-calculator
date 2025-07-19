@@ -12,11 +12,8 @@ public class Hooks {
 
 	@Before
 	public void beforeScenario() {
-
 		WebDriver driver = DriverFactory.createDriver(FrameworkConstants.BROWSER);
-
 		DriverManager.setDriver(driver);
-		DriverManager.getDriver().get(FrameworkConstants.URL);
 	}
 
 	@After
