@@ -23,7 +23,7 @@ public class DriverManager {
 		WebDriver currentDriver = DriverManager.getDriver();
 		if (currentDriver != null) {
 			currentDriver.quit();
-			driver.remove(); // TOOD: Verify if removing ThreadLocal value after quitting is necessary
+			driver.remove();
 		}
 	}
 }
