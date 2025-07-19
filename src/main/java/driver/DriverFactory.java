@@ -33,8 +33,6 @@ public final class DriverFactory {
 		} else if (browserName.equalsIgnoreCase("safari")) {
 			WebDriverManager.safaridriver().setup();
 			driver = new SafariDriver();
-		} else {
-
 		}
 
 		driver.manage().deleteAllCookies();
