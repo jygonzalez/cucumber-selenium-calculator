@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import constants.FrameworkConstants;
@@ -56,9 +57,18 @@ public class ElementActions {
 		return element.getText();
 	}
 
-	public boolean isVisible(WebElement element) {
+	public String getAttribute(WebElement element, String attributeName) {
 		wait.until(ExpectedConditions.visibilityOf(element));
-		return element.isDisplayed();
+		return element.getAttribute(attributeName);
+	}
+
+	public boolean isVisible(WebElement element) {
+		try {
+			wait.until(ExpectedConditions.visibilityOf(element));
+			return element.isDisplayed();
+		} catch (org.openqa.selenium.TimeoutException | org.openqa.selenium.NoSuchElementException e) {
+			return false;
+		}
 	}
 
 	public void moveTo(WebElement element) {
@@ -72,5 +82,16 @@ public class ElementActions {
 
 	public void contextClick(WebElement element) {
 		actions.contextClick(element).perform();
+	}
+
+	public void selectByVisibleText(WebElement dropdownElement, String visibleText) {
+		wait.until(ExpectedConditions.elementToBeClickable(dropdownElement));
+		Select select = new Select(dropdownElement);
+		select.selectByVisibleText(visibleText);
+	}
+
+	public void waitForPageToLoad() {
+		wait.until(webDriver -> ((org.openqa.selenium.JavascriptExecutor) webDriver)
+				.executeScript("return document.readyState").equals("complete"));
 	}
 }
