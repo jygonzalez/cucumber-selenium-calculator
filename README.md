@@ -9,4 +9,10 @@ This is an automation test framework that uses Selenium, TestNG and Cucumber (BD
 ## Instructions
 1. Install prerequisites
 2. Clone project and import to Eclipse as Maven Project
-3. Then Run As TestNG Test from the `TestRunner`
+3. Then Run As `Maven Test`
+
+### Generate Allure Report
+After running the tests, the results should be saved into `./target/allure-results` directory. To generate the report:
+- If you have `Allure CLI` installed, just navigate to `./target` and run `allure serve`
+- Or you can configure a new `Runtime Configuration` for Maven, and use the embedded Maven Runtime if you have Eclipse (`Allure CLI` not needed)
+<img width="912" height="836" alt="image" src="https://github.com/user-attachments/assets/3517d081-5acc-420f-b1bd-58d32b168b06" />
